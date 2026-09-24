@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">反骨小猫 · 它说左，你偏右</title>
+  <desc id="desc">A social share cover for the mobile game 反骨小猫.</desc>
+  <rect width="1200" height="630" fill="#f6f3e9"/>
+  <path d="M0 0 H1200 V94 C1040 132 850 94 687 116 C441 150 270 106 0 166 Z" fill="#d9f863"/>
+  <path d="M0 630 H1200 V553 C1045 508 889 556 710 536 C474 510 247 562 0 512 Z" fill="#ff775e"/>
+  <g transform="translate(670 68) scale(1.23)">
+    <path d="M122 301 C67 312 47 275 71 251 C91 231 112 246 101 264 C94 275 81 269 82 258" fill="none" stroke="#202220" stroke-width="25" stroke-linecap="round"/>
+    <path d="M126 266 C101 290 103 333 119 354 C140 380 260 380 281 354 C297 333 299 290 274 266 Z" fill="#202220" stroke="#202220" stroke-width="8"/>
+    <path d="M91 129 L111 50 C114 37 122 34 131 47 L161 86 C183 76 217 76 239 86 L269 47 C278 34 286 37 289 50 L309 129 C327 150 332 178 326 213 C315 271 266 294 200 294 C134 294 85 271 74 213 C68 178 73 150 91 129 Z" fill="#202220" stroke="#202220" stroke-width="8"/>
+    <path d="M116 73 L126 58 L147 91 Z M253 91 L274 58 L284 73 Z" fill="#ff775e" stroke="#202220" stroke-width="5"/>
+    <path d="M111 166 Q141 143 170 165 M230 165 Q259 143 290 166" fill="none" stroke="#f7edc5" stroke-width="12" stroke-linecap="round"/>
+    <path d="M113 140 Q137 126 161 139 M239 139 Q264 126 288 141" fill="none" stroke="#202220" stroke-width="9" stroke-linecap="round"/>
+    <path d="M190 183 L204 183 L197 193 Z" fill="#ff775e" stroke="#202220" stroke-width="4"/>
+    <path d="M166 202 C181 221 216 228 234 199 C219 210 184 212 166 202 Z" fill="#f7edc5" stroke="#202220" stroke-width="6"/>
+    <path d="M193 213 C200 208 208 212 209 220 C203 229 191 227 188 220 Z" fill="#ff775e" stroke="#202220" stroke-width="4"/>
+    <path d="M271 313 C274 292 270 268 280 255 C286 247 296 251 296 261 L295 276 C303 265 311 267 313 275 C313 287 307 296 306 309 C303 333 287 346 270 340" fill="#f7edc5" stroke="#202220" stroke-width="7"/>
+    <path d="M323 92 L331 111 L351 113 L335 126 L340 146 L323 135 L306 146 L311 126 L295 113 L315 111 Z" fill="#d9f863" stroke="#202220" stroke-width="5"/>
+  </g>
+  <g fill="#202220" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <text x="92" y="220" font-size="92" font-weight="900" letter-spacing="2">反骨小猫</text>
+    <text x="98" y="302" font-size="43" font-weight="700">它说左，你偏右。</text>
+    <text x="101" y="365" font-size="28" font-weight="700" fill="#ff775e">30 秒，测测你的反骨</text>
+  </g>
+  <g fill="#202220" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-weight="700">
+    <rect x="96" y="420" width="180" height="54" rx="27" fill="#d9f863"/>
+    <text x="128" y="456" font-size="25">点开就玩 →</text>
+  </g>
+</svg>

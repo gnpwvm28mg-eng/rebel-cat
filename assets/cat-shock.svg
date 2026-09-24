@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="title desc">
+  <title id="title">反骨小猫惊讶了</title>
+  <desc id="desc">The rebel cat freezes in comic surprise.</desc>
+  <g stroke="#202220" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M122 302 C67 313 47 275 71 251 C91 231 112 246 101 264 C94 275 81 269 82 258" fill="none" stroke-width="25"/>
+    <path d="M126 266 C101 290 103 333 119 354 C140 380 260 380 281 354 C297 333 299 290 274 266 Z" fill="#202220" stroke-width="8"/>
+    <path d="M91 129 L111 50 C114 37 122 34 131 47 L161 86 C183 76 217 76 239 86 L269 47 C278 34 286 37 289 50 L309 129 C327 150 332 178 326 213 C315 271 266 294 200 294 C134 294 85 271 74 213 C68 178 73 150 91 129 Z" fill="#202220" stroke-width="8"/>
+    <path d="M116 73 L126 58 L147 91 Z M253 91 L274 58 L284 73 Z" fill="#ff775e" stroke-width="5"/>
+    <!-- oversized startled eyes -->
+    <ellipse cx="139" cy="168" rx="30" ry="38" fill="#f7edc5" stroke-width="7"/>
+    <ellipse cx="261" cy="168" rx="30" ry="38" fill="#f7edc5" stroke-width="7"/>
+    <ellipse cx="145" cy="175" rx="8" ry="16" fill="#202220" stroke-width="4"/>
+    <ellipse cx="255" cy="175" rx="8" ry="16" fill="#202220" stroke-width="4"/>
+    <path d="M108 126 Q136 110 164 122 M236 122 Q264 110 292 126" fill="none" stroke-width="10"/>
+    <!-- open gasp -->
+    <path d="M181 202 C187 187 212 187 218 202 C224 221 213 240 199 241 C185 240 175 221 181 202 Z" fill="#ff775e" stroke-width="7"/>
+    <ellipse cx="199" cy="220" rx="7" ry="10" fill="#202220" stroke-width="4"/>
+    <path d="M113 208 C124 202 133 204 139 212 M274 208 C263 202 254 204 248 212" fill="none" stroke="#ff775e" stroke-width="7"/>
+    <path d="M110 200 L65 184 M111 220 L63 230 M290 200 L335 184 M289 220 L337 230" fill="none" stroke-width="5"/>
+    <!-- paws pressed to cheeks -->
+    <path d="M127 295 C111 295 104 311 111 323 C117 333 130 332 139 322 L143 305" fill="#f7edc5" stroke-width="7"/>
+    <path d="M273 295 C289 295 296 311 289 323 C283 333 270 332 261 322 L257 305" fill="#f7edc5" stroke-width="7"/>
+    <path d="M119 309 L132 315 M280 309 L267 315" fill="none" stroke-width="4"/>
+  </g>
+  <g fill="#ff775e" stroke="#202220" stroke-width="5" stroke-linejoin="round">
+    <path d="M322 90 L330 109 L350 111 L334 124 L338 144 L322 133 L306 144 L310 124 L294 111 L314 109 Z"/>
+    <path d="M70 101 L76 116 L92 118 L80 128 L83 144 L70 135 L57 144 L60 128 L48 118 L64 116 Z"/>
+  </g>
+</svg>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f6f3e9" />
+  <meta name="description" content="反骨小猫：30 秒内，猫让你点什么，你就偏不点什么。" />
+  <meta property="og:title" content="反骨小猫｜它说左，你偏右" />
+  <meta property="og:description" content="30 秒反应挑战，发给朋友比比谁更反骨。" />
+  <meta property="og:image" content="assets/og-cover.svg" />
+  <link rel="icon" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="style.css?v=1" />
+  <title>反骨小猫 · 它说左，你偏右</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="回到反骨小猫首页"><span class="brand-mark">反</span><span>反骨小猫</span></a>
+      <div class="top-actions"><button id="soundBtn" class="icon-btn" aria-label="声音开关" aria-pressed="true">🔊</button><button id="helpBtn" class="icon-btn" aria-label="查看玩法">?</button></div>
+    </header>
+
+    <section class="game-layout">
+      <aside class="mascot-column">
+        <div class="speech-bubble" id="bubble">我说左，你敢点右吗？</div>
+        <img id="mascot" class="mascot" src="assets/cat.svg" alt="一只挑衅地眯眼的小猫" />
+        <div class="mascot-sticker">反骨值<br><strong>MAX</strong></div>
+      </aside>
+
+      <section class="game-card" aria-live="polite">
+        <div id="startView" class="view start-view">
+          <div class="eyebrow"><span class="live-dot"></span> 今日反骨挑战 · 30 秒</div>
+          <h1>它说左，<br><em>你偏右。</em></h1>
+          <p class="lede">猫猫会用尽办法骗你。<br>看清题目，做相反的事。</p>
+          <div class="rule-pills"><span>⚡ 越快越高分</span><span>🔥 连对有加成</span></div>
+          <button id="startBtn" class="primary-btn">开始反骨 <span>→</span></button>
+          <div class="start-note" id="challengeNote"></div>
+        </div>
+
+        <div id="playView" class="view play-view hidden">
+          <div class="hud">
+            <div><span class="hud-label">得分</span><strong id="score">0</strong></div>
+            <div class="timer-wrap"><span class="timer-label">剩余</span><strong id="timer">30</strong><div class="timer-track"><i id="timerBar"></i></div></div>
+            <div class="hud-right"><span class="hud-label">连对</span><strong id="combo">0</strong><span class="combo-fire" id="comboFire"></span></div>
+          </div>
+          <div class="question-meta"><span id="questionNo">第 1 题</span><span class="tiny-hint">点它叫你点的<strong>相反</strong>选项</span></div>
+          <div class="question-box"><div id="prompt" class="prompt">点右边的猫</div><div id="hint" class="hint">别被它骗啦</div></div>
+          <div id="options" class="options" role="group" aria-label="选择答案"></div>
+          <div class="bottom-note"><span id="feedback" class="feedback"></span><span class="keyboard-hint">键盘 ← → 也能玩</span></div>
+        </div>
+
+        <div id="resultView" class="view result-view hidden">
+          <div class="result-kicker">时间到！你的反骨报告</div>
+          <div class="result-score"><span id="finalScore">0</span><small>分</small></div>
+          <div class="rank-chip" id="rankChip">🐣 反骨实习生</div>
+          <p id="rankDesc" class="rank-desc"></p>
+          <div class="result-stats"><div><strong id="rightCount">0</strong><span>答对</span></div><div><strong id="bestCombo">0</strong><span>最高连对</span></div><div><strong id="bestScore">0</strong><span>历史最高</span></div></div>
+          <div class="share-card" id="shareCard"><span>🐱</span><div><b>我在反骨小猫拿了 <i id="shareScore">0</i> 分</b><small>你能比我更反骨吗？</small></div><strong>→</strong></div>
+          <div class="result-actions"><button id="shareBtn" class="primary-btn">复制挑战链接 <span>↗</span></button><button id="againBtn" class="secondary-btn">再来一局</button></div>
+          <div class="share-status" id="shareStatus" role="status"></div>
+        </div>
+      </section>
+    </section>
+
+    <footer><span>一局 30 秒 · 不收集个人信息</span><span>把你的分数发给最嘴硬的朋友 ↗</span></footer>
+  </main>
+  <dialog id="helpDialog"><button id="closeHelp" class="dialog-close" aria-label="关闭">×</button><div class="dialog-cat">🐱</div><h2>怎么反骨？</h2><p>题目叫你点什么，就点它的反面。<br>“点大的” → 选小猫。<br>“点红色” → 选蓝色。</p><p class="dialog-tip">答得越快分越高，答错会扣 2 秒。把结果发出去，挑战下一个反骨仔。</p></dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script type="module" src="app.js?v=1"></script>
+</body>
+</html>

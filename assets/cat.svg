@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="title desc">
+  <title id="title">反骨小猫</title>
+  <desc id="desc">A chunky ink-black cat with a sideways, mischievous look.</desc>
+  <g stroke="#202220" stroke-linecap="round" stroke-linejoin="round">
+    <!-- tail behind the body -->
+    <path d="M119 300 C62 313 43 270 71 246 C93 227 113 244 101 263 C93 275 78 267 80 255" fill="none" stroke-width="25"/>
+    <!-- compact body -->
+    <path d="M126 265 C103 286 101 331 116 352 C136 379 264 379 284 352 C299 331 297 286 274 265 Z" fill="#202220" stroke-width="8"/>
+    <!-- head and pointed ears -->
+    <path d="M91 128 L111 50 C114 37 122 34 131 47 L161 86 C183 76 217 76 239 86 L269 47 C278 34 286 37 289 50 L309 128 C327 150 332 178 326 213 C315 271 266 294 200 294 C134 294 85 271 74 213 C68 178 73 150 91 128 Z" fill="#202220" stroke-width="8"/>
+    <!-- warm inner ears -->
+    <path d="M116 73 L126 58 L147 91 Z" fill="#ff775e" stroke-width="5"/>
+    <path d="M253 91 L274 58 L284 73 Z" fill="#ff775e" stroke-width="5"/>
+    <!-- asymmetrical sleepy eyes -->
+    <path d="M110 163 C126 145 151 143 170 159 C159 181 133 185 113 174 Z" fill="#f7edc5" stroke-width="6"/>
+    <path d="M230 159 C250 142 277 146 291 165 C280 184 249 182 233 173 Z" fill="#f7edc5" stroke-width="6"/>
+    <path d="M142 157 C147 160 149 167 146 176" fill="none" stroke-width="8"/>
+    <path d="M259 155 C265 160 266 169 261 177" fill="none" stroke-width="8"/>
+    <!-- eyebrows -->
+    <path d="M112 139 C130 128 149 129 163 138" fill="none" stroke-width="9"/>
+    <path d="M239 136 C256 128 275 130 288 143" fill="none" stroke-width="9"/>
+    <!-- tiny rebel nose and crooked smile -->
+    <path d="M190 183 L204 183 L197 193 Z" fill="#ff775e" stroke-width="4"/>
+    <path d="M197 193 C193 207 179 212 169 204 M197 193 C203 210 220 211 229 201" fill="none" stroke-width="6"/>
+    <path d="M193 206 C198 202 205 204 208 211 C201 221 191 219 188 212 Z" fill="#ff775e" stroke-width="4"/>
+    <!-- cheeks and whiskers -->
+    <path d="M113 208 C123 202 132 204 138 212" fill="none" stroke="#ff775e" stroke-width="7"/>
+    <path d="M274 208 C264 202 255 204 249 212" fill="none" stroke="#ff775e" stroke-width="7"/>
+    <path d="M111 204 L69 194 M112 216 L66 223 M288 204 L331 194 M288 216 L334 223" fill="none" stroke-width="5"/>
+    <!-- little paws at the edge of the shirt -->
+    <path d="M139 309 C120 311 114 331 125 341 C136 351 153 344 155 328" fill="#f7edc5" stroke-width="7"/>
+    <path d="M261 309 C280 311 286 331 275 341 C264 351 247 344 245 328" fill="#f7edc5" stroke-width="7"/>
+  </g>
+  <!-- the one bright rebellion mark -->
+  <path d="M322 95 L329 112 L347 114 L333 125 L337 143 L322 133 L307 143 L311 125 L297 114 L315 112 Z" fill="#d9f863" stroke="#202220" stroke-width="5" stroke-linejoin="round"/>
+</svg>
