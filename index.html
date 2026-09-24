@@ -7,9 +7,9 @@
   <meta name="description" content="反骨小猫：30 秒内，猫让你点什么，你就偏不点什么。" />
   <meta property="og:title" content="反骨小猫｜它说左，你偏右" />
   <meta property="og:description" content="30 秒反应挑战，发给朋友比比谁更反骨。" />
-  <meta property="og:image" content="assets/og-cover.svg" />
+  <meta property="og:image" content="https://gnpwvm28mg-eng.github.io/rebel-cat/assets/og-cover.png" />
   <link rel="icon" href="assets/favicon.svg" />
-  <link rel="stylesheet" href="style.css?v=1" />
+  <link rel="stylesheet" href="style.css?v=2" />
   <title>反骨小猫 · 它说左，你偏右</title>
 </head>
 <body>
@@ -56,7 +56,7 @@
           <div class="result-stats"><div><strong id="rightCount">0</strong><span>答对</span></div><div><strong id="bestCombo">0</strong><span>最高连对</span></div><div><strong id="bestScore">0</strong><span>历史最高</span></div></div>
           <div class="share-card" id="shareCard"><span>🐱</span><div><b>我在反骨小猫拿了 <i id="shareScore">0</i> 分</b><small>你能比我更反骨吗？</small></div><strong>→</strong></div>
           <div class="result-actions"><button id="shareBtn" class="primary-btn">复制挑战链接 <span>↗</span></button><button id="againBtn" class="secondary-btn">再来一局</button></div>
-          <div class="share-status" id="shareStatus" role="status"></div>
+          <button id="cardBtn" class="card-btn">生成成绩图片 ↗</button><div class="share-status" id="shareStatus" role="status"></div>
         </div>
       </section>
     </section>
@@ -64,7 +64,7 @@
     <footer><span>一局 30 秒 · 不收集个人信息</span><span>把你的分数发给最嘴硬的朋友 ↗</span></footer>
   </main>
   <dialog id="helpDialog"><button id="closeHelp" class="dialog-close" aria-label="关闭">×</button><div class="dialog-cat">🐱</div><h2>怎么反骨？</h2><p>题目叫你点什么，就点它的反面。<br>“点大的” → 选小猫。<br>“点红色” → 选蓝色。</p><p class="dialog-tip">答得越快分越高，答错会扣 2 秒。把结果发出去，挑战下一个反骨仔。</p></dialog>
-  <div id="toast" class="toast" role="status"></div>
-  <script type="module" src="app.js?v=1"></script>
+  <dialog id="cardDialog"><button id="closeCard" class="dialog-close" aria-label="关闭成绩图片">×</button><img id="cardImage" alt="反骨小猫成绩卡" style="width:100%;display:block"/><p>手机可长按图片保存</p><a id="downloadCard" download="反骨小猫成绩.png">下载成绩卡</a></dialog><div id="toast" class="toast" role="status"></div>
+  <script type="module" src="app.js?v=2"></script>
 </body>
 </html>
