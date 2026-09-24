@@ -64,7 +64,8 @@ export function dailySeed(date) {
   } else {
     const parsed = date instanceof Date ? date : date == null ? new Date() : new Date(date);
     const safeDate = Number.isNaN(parsed.getTime()) ? new Date() : parsed;
-    key = safeDate.toISOString().slice(0, 10).replaceAll("-", "");
+    const parts = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(safeDate);
+    key = ["year", "month", "day"].map((type) => parts.find((part) => part.type === type).value).join("");
   }
   return `RC-DAILY-${key}`;
 }
@@ -90,99 +91,76 @@ function orderedPair(random, correct, wrong) {
   };
 }
 
-function makeSide(random, round) {
-  const target = round % 2 === 0 ? "左边" : "右边";
+function makeSide(random) {
+  const target = random() < 0.5 ? "左边" : "右边";
   const opposite = target === "左边" ? "右边" : "左边";
-  const pair = orderedPair(
-    random,
-    { id: "a", label: opposite, kind: "direction", value: opposite === "左边" ? "left" : "right" },
-    { id: "b", label: target, kind: "direction", value: target === "左边" ? "left" : "right" },
-  );
   return {
-    type: "side",
-    prompt: `点${target}！`,
-    hint: "反着来：选择命令相反的一边。",
-    ...pair,
-    explanation: `命令叫你点${target}，所以正确答案是${opposite}。`,
+    type: "side", prompt: `点${target}！`, hint: "注意左右位置。",
+    options: [
+      { id: "a", label: "左边", kind: "direction", value: "left" },
+      { id: "b", label: "右边", kind: "direction", value: "right" },
+    ],
+    correctIndex: target === "左边" ? 1 : 0,
+    explanation: `命令叫你点${target}，所以应该点${opposite}。`,
   };
 }
 
-function makeSize(random, round) {
-  const correctSize = "small";
-  const pair = orderedPair(
-    random,
-    { id: "a", label: "小猫", kind: "cat", value: "cat", size: correctSize },
-    { id: "b", label: "大猫", kind: "cat", value: "cat", size: "large" },
-  );
+function makeSize(random) {
+  const targetBig = random() < 0.5;
+  const small = { label: "小猫", kind: "cat", value: "cat", size: "small" };
+  const large = { label: "大猫", kind: "cat", value: "cat", size: "large" };
   return {
-    type: "size",
-    prompt: round % 2 ? "点大的猫！" : "点最大那只猫！",
-    hint: "猫猫也要反着选：请选小猫。",
-    ...pair,
-    explanation: "命令要求大的，反骨规则要选小猫。",
+    type: "size", prompt: `点${targetBig ? "大" : "小"}的猫！`, hint: "只比较猫的大小。",
+    ...orderedPair(random, targetBig ? small : large, targetBig ? large : small),
+    explanation: `命令要${targetBig ? "大" : "小"}猫，所以选${targetBig ? "小" : "大"}猫。`,
   };
 }
 
 function makeNumber(random, round) {
-  const floor = round >= 6 ? 10 : 2;
-  const left = intBetween(random, floor, floor + (round >= 6 ? 15 : 7));
-  const gap = intBetween(random, 1, round >= 6 ? 8 : 4);
-  const low = left;
-  const high = left + gap;
-  const lowOption = { id: "a", label: `${low}`, kind: "number", value: low };
-  const highOption = { id: "b", label: `${high}`, kind: "number", value: high };
-  const pair = orderedPair(random, lowOption, highOption);
+  const low = intBetween(random, round >= 6 ? 10 : 2, round >= 6 ? 50 : 9);
+  const high = low + intBetween(random, 1, round >= 6 ? 8 : 4);
+  const targetBig = random() < 0.5;
+  const lowOption = { label: `${low}`, kind: "number", value: low };
+  const highOption = { label: `${high}`, kind: "number", value: high };
   return {
-    type: "number",
-    prompt: "点数字大的！",
-    hint: "只看数字：反着选较小的那个。",
-    ...pair,
-    explanation: `命令要大的数字（${high}），所以应选较小的 ${low}。`,
+    type: "number", prompt: `点数字${targetBig ? "大" : "小"}的！`, hint: "只比较数字大小。",
+    ...orderedPair(random, targetBig ? lowOption : highOption, targetBig ? highOption : lowOption),
+    explanation: `命令要${targetBig ? "大" : "小"}的数字，所以应选 ${targetBig ? low : high}。`,
   };
 }
 
 function makeColor(random) {
-  const correct = { id: "a", label: "蓝色", kind: "color", value: "blue", color: "blue" };
-  const wrong = { id: "b", label: "红色", kind: "color", value: "red", color: "red" };
-  const pair = orderedPair(random, correct, wrong);
+  const targetRed = random() < 0.5;
+  const blue = { label: "蓝色", kind: "color", value: "blue", color: "blue" };
+  const red = { label: "红色", kind: "color", value: "red", color: "red" };
   return {
-    type: "color",
-    prompt: "点红色！",
-    hint: "命令说红色，反着选蓝色。",
-    ...pair,
-    explanation: "红色的反面是蓝色，所以选蓝色。",
+    type: "color", prompt: `点${targetRed ? "红" : "蓝"}色！`, hint: "看色块的颜色。",
+    ...orderedPair(random, targetRed ? blue : red, targetRed ? red : blue),
+    explanation: `只有两个选项，避开${targetRed ? "红" : "蓝"}色即可。`,
   };
 }
 
 function makeCount(random, round) {
   const low = intBetween(random, 1, round >= 6 ? 3 : 2);
-  const high = low + intBetween(random, 1, round >= 6 ? 4 : 2);
-  const lowOption = { id: "a", label: `${low}只猫`, kind: "count", value: low, count: low };
-  const highOption = { id: "b", label: `${high}只猫`, kind: "count", value: high, count: high };
-  const pair = orderedPair(random, lowOption, highOption);
+  const high = low + intBetween(random, 1, round >= 6 ? 3 : 2);
+  const targetMore = random() < 0.5;
+  const lowOption = { label: `${low}只猫`, kind: "count", value: low, count: low };
+  const highOption = { label: `${high}只猫`, kind: "count", value: high, count: high };
   return {
-    type: "count",
-    prompt: "点猫多的！",
-    hint: "反着来：选择猫更少的选项。",
-    ...pair,
-    explanation: `命令要猫多的（${high}只），所以正确是较少的 ${low}只。`,
+    type: "count", prompt: `点猫${targetMore ? "多" : "少"}的！`, hint: "数一数有几只猫。",
+    ...orderedPair(random, targetMore ? lowOption : highOption, targetMore ? highOption : lowOption),
+    explanation: `命令要猫${targetMore ? "多" : "少"}的，所以选 ${targetMore ? low : high} 只。`,
   };
 }
 
-function makeWord(random, round) {
-  // The ink is deliberately independent from the character. The prompt says
-  // to judge the written word, so a renderer must use value rather than color.
-  const blueInk = choose(random, COLORS.filter((color) => color !== "blue"));
-  const redInk = choose(random, COLORS.filter((color) => color !== "red"));
-  const correct = { id: "a", label: "蓝", kind: "word", value: "蓝", color: blueInk };
-  const wrong = { id: "b", label: "红", kind: "word", value: "红", color: redInk };
-  const pair = orderedPair(random, correct, wrong);
+function makeWord(random) {
+  const targetRed = random() < 0.5;
+  const blue = { label: "蓝", kind: "word", value: "蓝", color: choose(random, COLORS.filter(color => color !== "blue")) };
+  const red = { label: "红", kind: "word", value: "红", color: choose(random, COLORS.filter(color => color !== "red")) };
   return {
-    type: "word",
-    prompt: round % 2 ? "点写着「红」的！" : "找出写着「红」的选项！",
-    hint: "只认字，不认墨水颜色；反着选写着「蓝」的。",
-    ...pair,
-    explanation: "命令指定了「红」字，反骨答案是写着「蓝」的选项，墨水颜色不影响判断。",
+    type: "word", prompt: `点写着「${targetRed ? "红" : "蓝"}」的！`, hint: "看文字，不看字的颜色。",
+    ...orderedPair(random, targetRed ? blue : red, targetRed ? red : blue),
+    explanation: `避开「${targetRed ? "红" : "蓝"}」字，选「${targetRed ? "蓝" : "红"}」字。`,
   };
 }
 
@@ -194,9 +172,24 @@ export function createRun(seed = dailySeed()) {
   const normalized = normalizeSeed(seed);
   const random = mulberry32(hashString(normalized));
   let index = 0;
+  let previousType = null;
+  let bag = [];
+  function nextType() {
+    if (index < 3) return TYPES[index];
+    if (!bag.length) {
+      bag = [...TYPES];
+      for (let i = bag.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(random() * (i + 1));
+        [bag[i], bag[j]] = [bag[j], bag[i]];
+      }
+      if (bag[0] === previousType) [bag[0], bag[1]] = [bag[1], bag[0]];
+    }
+    return bag.shift();
+  }
   return {
     next() {
-      const type = TYPES[index % TYPES.length]; // first question is always side
+      const type = nextType();
+      previousType = type;
       const builders = { side: makeSide, size: makeSize, number: makeNumber, color: makeColor, count: makeCount, word: makeWord };
       const question = builders[type](random, index);
       const result = {
