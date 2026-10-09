@@ -5,3 +5,20 @@
 @media (max-width:370px){.view{padding-left:16px;padding-right:16px}.prompt{font-size:22px}.option{min-height:121px}.option-label{font-size:16px}}
 
 button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}.option-cat{width:85px;height:85px;object-fit:contain;pointer-events:none}.option-cat.small{width:55px;height:55px}.option-cat.large{width:110px;height:110px}.count-cats{display:flex;flex-wrap:wrap;justify-content:center;max-width:150px;padding:8px;gap:0}.count-cats img{width:35px;height:35px;object-fit:contain}.feedback{max-width:100%;font-size:10px}.keyboard-hint{display:none}.card-btn{background:transparent;border:0;text-decoration:underline;margin-top:14px;font:inherit;font-size:12px;cursor:pointer}.share-status{overflow-wrap:anywhere;height:auto;min-height:16px}#cardDialog{max-width:360px;padding:28px 15px 15px;max-height:95svh}.option{touch-action:manipulation}.icon-btn{min-width:40px;min-height:40px}.start-view{min-height:470px}@media(max-width:760px){.start-view{min-height:400px}.start-view h1{font-size:49px}.game-layout{flex:0}.app-shell{padding-bottom:20px}.result-actions .primary-btn{font-size:12px;padding:12px 8px}.result-actions .secondary-btn{font-size:12px;padding:12px 8px}.speech-bubble{left:4%;font-size:10px}.mascot{right:5%}.share-card b{font-size:10px}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* Keep the web edition usable on tall phones, short screens and safe areas. */
+.app-shell{min-height:100vh;padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))}
+.topbar{flex-shrink:0}
+dialog{width:calc(100% - 30px);max-height:90vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+#cardDialog{max-height:90vh}
+@supports(height:100svh){.app-shell{min-height:100svh}}
+@media(max-width:760px){
+  .game-layout{flex:1 0 auto}
+  .mascot-column{flex:0 0 103px}
+  .game-card{display:flex;flex-direction:column;flex:1 0 auto;min-height:400px}
+  .game-card>.view{flex:1 0 auto;min-height:0}
+}
+@media(min-width:761px) and (max-width:820px){
+  .game-layout{grid-template-columns:180px minmax(0,1fr);gap:24px}
+  .view{padding-left:24px;padding-right:24px}
+}

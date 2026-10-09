@@ -1,10 +1,10 @@
-import { createRun, scoreAnswer, getRank, dailySeed, newSeed, normalizeSeed } from './engine.js?v=2';
-import { makeScoreCard } from './card.js';
+import { createRun, scoreAnswer, getRank, dailySeed, newSeed, normalizeSeed } from './engine.js?v=20261009';
+import { makeScoreCard } from './card.js?v=20261009';
 
 const $ = (s) => document.querySelector(s);
 const els = { start: $('#startView'), play: $('#playView'), result: $('#resultView'), startBtn: $('#startBtn'), again: $('#againBtn'), share: $('#shareBtn'), options: $('#options'), prompt: $('#prompt'), hint: $('#hint'), score: $('#score'), timer: $('#timer'), bar: $('#timerBar'), combo: $('#combo'), comboFire: $('#comboFire'), questionNo: $('#questionNo'), feedback: $('#feedback'), mascot: $('#mascot'), bubble: $('#bubble'), final: $('#finalScore'), rank: $('#rankChip'), rankDesc: $('#rankDesc'), right: $('#rightCount'), bestCombo: $('#bestCombo'), bestScore: $('#bestScore'), shareScore: $('#shareScore'), shareStatus: $('#shareStatus'), toast: $('#toast'), challengeNote: $('#challengeNote'), sound: $('#soundBtn'), help: $('#helpBtn'), dialog: $('#helpDialog'), closeHelp: $('#closeHelp') };
 let run, seed, score = 0, combo = 0, maxCombo = 0, right = 0, questionNo = 0, seconds = 30, timerId, nextId, deadline = 0, playing = false, locked = false, soundOn = true;
-const params = new URLSearchParams(location.search); const incomingSeed = params.get('challenge'); const incomingScore = Number(params.get('score'));
+const params = new URLSearchParams(location.search); const incomingSeed = params.get('challenge'); const rawIncomingScore = Number(params.get('score')); const incomingScore = Number.isFinite(rawIncomingScore) ? Math.max(0, Math.min(99999, Math.floor(rawIncomingScore))) : 0;
 seed = normalizeSeed(incomingSeed || dailySeed());
 if (incomingSeed) { els.challengeNote.textContent = `朋友拿了 ${Number.isFinite(incomingScore)?Math.max(0,Math.min(99999,incomingScore)):0} 分，敢接招吗？`; els.startBtn.firstChild.textContent='接受挑战 '; }
 else els.challengeNote.textContent = '今日题组已锁定 · 每个人拿到的题目一样';
